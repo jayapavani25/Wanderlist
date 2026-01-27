@@ -1,5 +1,108 @@
 <% layout("/layouts/boilerplate") %>
 
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <h3 class="mb-4 text-center">Create a New Listing</h3>
+
+      <form
+        method="POST"
+        action="/listings"
+        enctype="multipart/form-data"
+        class="needs-validation"
+        novalidate
+      >
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input
+            name="listing[title]"
+            type="text"
+            class="form-control"
+            placeholder="Enter title"
+            required
+          >
+          <div class="invalid-feedback">Title is required</div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea
+            name="listing[description]"
+            class="form-control"
+            rows="3"
+            required
+          ></textarea>
+          <div class="invalid-feedback">Please enter a description</div>
+        </div>
+
+        <!-- Image -->
+        <div class="mb-3">
+          <label class="form-label">Upload Listing Image</label>
+          <input
+            name="listing[image]"
+            type="file"
+            class="form-control"
+            required
+          >
+          <div class="invalid-feedback">Please upload an image</div>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+          <label class="form-label">Price</label>
+          <input
+            name="listing[price]"
+            type="number"
+            class="form-control"
+            placeholder="Enter price"
+            required
+          >
+          <div class="invalid-feedback">Price is required</div>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label class="form-label">Location</label>
+          <input
+            name="listing[location]"
+            type="text"
+            class="form-control"
+            placeholder="Enter location"
+            required
+          >
+          <div class="invalid-feedback">Location is required</div>
+        </div>
+
+        <!-- Country -->
+        <div class="mb-3">
+          <label class="form-label">Country</label>
+          <input
+            name="listing[country]"
+            type="text"
+            class="form-control"
+            placeholder="Enter country"
+            required
+          >
+          <div class="invalid-feedback">Country is required</div>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button class="btn btn-danger btn-lg">Add Listing</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <% layout("/layouts/boilerplate") %>
+
     <h3>Create a New Listing</h3>
     <form method="POST" action="/listings" novalidate class="needs-validation"
      enctype="multipart/form-data">
@@ -20,7 +123,6 @@
             <lable for="image" class="form-label">Upload Listing Image</lable>
             <input name="listing[image]" type="file" class="form-control">
             required
-            <!-- <input type="hidden" name="listing[image][filename]" value="listingimage"> -->
 
         </div>
 
@@ -47,4 +149,4 @@
 
         <br/><br/>
         <button class="btn add-btn">Add</button>
-    </form>
+    </form> --> 

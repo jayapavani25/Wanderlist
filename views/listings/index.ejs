@@ -91,8 +91,10 @@
     </div>
     </div>
 </div>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+<!-- <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-6 mt-3">
 <% for (let listing of allListings) { %>
+    <div class="col-12 col-sm-6 col-md-4 mb-4">
+      <div class="card h-100">
 <a href="/listings/<%= listing._id%>" class="listing-link">
     <div class="card col listing-card" >
     <img src="<%= listing.image.url %>" class="card-img-top" alt="listings_image" style="height:20rem";>
@@ -112,7 +114,36 @@
     </div>
 </a>
 <% } %>
+</div> -->
+<div class="row g-4 mt-3">
+  <% for (let listing of allListings) { %>
+
+    <div class="col-12 col-sm-6 col-md-4">
+      <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none">
+        
+        <div class="card h-100 listing-card">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top img-fluid"
+            alt="listing image"
+            style="height: 20rem; object-fit: cover;"
+          >
+
+          <div class="card-body">
+            <p class="card-text">
+              <strong><%= listing.title %></strong><br>
+              ₹ <%= listing.price.toLocaleString("en-IN") %> / night
+              <span class="tax-info"> +18% GST</span>
+            </p>
+          </div>
+        </div>
+
+      </a>
+    </div>
+
+  <% } %>
 </div>
+
 
 <script>
     let taxSwitch=document.getElementById("flexSwitchCheckDefault");

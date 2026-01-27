@@ -16,7 +16,9 @@
         </div>
         <div class="mb-3">
             Original listing image <br/>
-        <img src="<%= originalImageUrl %>">
+        <!-- <img src="<%= originalImageUrl %>"> -->
+        <img src="<%= originalImageUrl %>" class="img-fluid rounded">
+
         </div>
         <div class="mb-3">
         <lable for="image" class="form-label">Upload New Image </lable>
@@ -33,12 +35,12 @@
      -->
         
         <div class="row">
-        <div class="mb-3 col-md-4">
+        <div class="mb-3 Col-12 col-md-4">
         <lable for="price" class="form-label">Price</lable>
         <input name="listing[price]" value="<%= listing.price %>" type="text" class="form-control" required>   
         <div class="invalid-feedback">Price should be valid.</div>
         </div>
-        <div class="mb-3 col-md-4">
+        <div class="mb-3 col-12 col-md-4">
         <lable for="country" class="form-label">Country</lable>
         <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required>  
         <div class="invalid-feedback">Country should be valid.</div> 
