@@ -7,7 +7,7 @@ const mapToken= process.env.MAP_TOKEN;
 
 const geocodingClient = mbxGeocoding({ accessToken:mapToken });
 
-console.log("DB_URL =", process.env.dbUrl);
+console.log("ATLASDB_URL=", process.env.dbUrl);
 
 mongoose.connect(process.env.ATLASDB_URL)
     .then(() => console.log("MongoDB Connected"))

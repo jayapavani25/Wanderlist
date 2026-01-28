@@ -22,6 +22,7 @@ const User=require("./models/user.js");
 const listingRouter= require("./routes/listing.js");
 const reviewRouter=require("./routes/review.js");
 const userRouter=require("./routes/user.js");
+const indexRoutes = require("./routes/index");
 
 
 const dbUrl= process.env.ATLASDB_URL;
@@ -41,6 +42,7 @@ app.set("views", path.join(__dirname,"views"));
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"/public")))
+
 
 const store = MongoStore.create({
     mongoUrl:dbUrl,
@@ -68,6 +70,7 @@ const sessionOptions={
 
 
 
+app.use("/", indexRoutes);
 
 app.use(session(sessionOptions));
 app.use(flash());
