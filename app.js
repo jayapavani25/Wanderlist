@@ -18,11 +18,12 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
-
+//
+// const indexRoutes = require("./routes/index.js");
+//
 const listingRouter= require("./routes/listing.js");
 const reviewRouter=require("./routes/review.js");
 const userRouter=require("./routes/user.js");
-const indexRoutes = require("./routes/index");
 
 
 const dbUrl= process.env.ATLASDB_URL;
@@ -70,7 +71,7 @@ const sessionOptions={
 
 
 
-app.use("/", indexRoutes);
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -81,7 +82,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
+//
+// app.use((req, res, next) => {
+//   res.locals.currUser = req.user;
+//   next();
+// });
+// //
 //middleware
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
@@ -90,6 +96,14 @@ app.use((req,res,next)=>{
     next();  //need to call next otherwise we will get stucked in this middleware
 
 })
+// Make currUser and flash messages available to all templates
+// app.use((req, res, next) => {
+//   res.locals.currUser = req.user || null; // <- this ensures it's always defined
+//   res.locals.success = req.flash("success");
+//   res.locals.error = req.flash("error");
+//   next();
+// });
+
 
 
 
@@ -104,6 +118,12 @@ app.use((req,res,next)=>{
 // });
 
 //For listing routes
+//
+// app.use("/", indexRoutes);
+//
+app.use("/",(req,res)=>{
+    console.log("home")
+})
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/",userRouter);
